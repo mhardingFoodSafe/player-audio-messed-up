@@ -318,8 +318,8 @@ if (loop == null) { loop = false; }	this.initialize(mode,startPosition,loop,{});
 			if(isDragging == false){
 				proportion = this.currentFrame/this.totalFrames;
 				if(Math.round(this.currentFrame/30) % 2 == 0){ // do this every 10 seconds
-					//audioSync(proportion);
-					audioInstance.currentTime = video.currentTime;
+					audioSync(proportion);
+					//audioInstance.currentTime = video.currentTime;
 				}
 				this.scrubber.x = scrubberStart + (proportion * barWidth);
 			}
@@ -399,7 +399,7 @@ if (loop == null) { loop = false; }	this.initialize(mode,startPosition,loop,{});
 			this.pauseButton.visible = false;
 		}
 		
-		//slaves audio to the video and frame animation
+		//syncs audio to the video and frame animation
 		function audioSync(p){
 			audioInstance.setPosition(p * audioInstance.duration); //sounds like a robot only do this every 10 seconds
 		}
